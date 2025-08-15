@@ -10,10 +10,3 @@ repos:
     resources:
       include:
         - "contributing/prompts/resources/**/*.template.md"
-  - repo: https://github.com/battle-panda/prompts.git
-    id: prompts
-    prompts:
-      include:
-        - "**/*.md"
-      exclude:
-        - "resources/**/*"
