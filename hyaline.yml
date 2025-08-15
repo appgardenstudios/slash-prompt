@@ -27,7 +27,7 @@ check:
       - "**/*.go"
       - "Makefile"
     exclude:
-      - "e2e/**"
+      - "e2e/**/*"
       - "**/*_test.go"
   documentation:
     include:
