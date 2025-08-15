@@ -11,6 +11,5 @@ const (
 
 // BuildResourceURI constructs a resource URI from repo and path components
 func BuildResourceURI(repo, path string) string {
-	key := filepath.Join(repo, path)
-	return URIScheme + key
+	return URIScheme + filepath.Join(repo, path)
 }

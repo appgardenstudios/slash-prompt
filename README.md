@@ -1,6 +1,6 @@
 # `/prompt`
 
-A Model Context Protocol (MCP) server that enables sharing and discovering prompts and resources from Git repositories.
+A Model Context Protocol (MCP) server that allows people to share prompts and resources.
 
 ## Features
 
@@ -77,24 +77,24 @@ repos:
 
 ### Configuration Options
 
-- `repo` (string, required): Git repository URL (HTTPS only).
-- `id` (string, optional): Unique identifier for the repository. Defaults to repository name.
-- `ref` (string, optional): Git branch, tag, or commit to use. Defaults to the repository's default branch.
-- `auth` (object, optional): Authentication configuration for private repositories.
-  - `username` (string, required if auth specified): Username for authentication.
-  - `password` (string, required if auth specified): Password or personal access token.
-- `prompts` (object, optional): Configuration for prompt files.
-  - `include` (array, optional): Glob patterns for files to include. Defaults to `["**/*.md"]`.
-  - `exclude` (array, optional): Glob patterns for files to exclude.
-- `resources` (object, optional): Configuration for resource files.
-  - `include` (array, optional): Glob patterns for files to include. Defaults to `["**/*.md"]`.
-  - `exclude` (array, optional): Glob patterns for files to exclude.
+- `repos` (array, required): List of one or more repositories to load prompts and resources from.
+  - `repo` (string, required): Git repository URL (HTTPS only).
+  - `id` (string, optional): Unique identifier for the repository. Defaults to repository name.
+  - `ref` (string, optional): Git branch, tag, or commit to use. Using a commit hash is strongly recommended to mitigate supply chain attacks. Defaults to the repository's default branch.
+  - `auth` (object, optional): Authentication configuration for private repositories.
+    - `username` (string, required if auth specified): Username for authentication.
+    - `password` (string, required if auth specified): Password or personal access token.
+  - `prompts` (object, optional): Configuration for prompt files.
+    - `include` (array, optional): Glob patterns for files to include. Defaults to `["**/*.md"]`.
+    - `exclude` (array, optional): Glob patterns for files to exclude.
+  - `resources` (object, optional): Configuration for resource files.
+    - `include` (array, optional): Glob patterns for files to include. Defaults to `["**/*.md"]`.
+    - `exclude` (array, optional): Glob patterns for files to exclude.
 
-**Note:** Glob pattern matching is powered by [doublestar](https://pkg.go.dev/github.com/bmatcuk/doublestar/v4).
-
-For private repositories, create a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token) with read-only permissions and provide it as the `password`.
-
-**Note:** SSH authentication is not supported intentionally due to the difficulty of implementing fine-grained access control with SSH keys. If you believe SSH support should be added, please [reach out](https://github.com/appgardenstudios/slash-prompt/discussions/categories/feedback).
+**Notes:**
+- Glob pattern matching is powered by [doublestar](https://pkg.go.dev/github.com/bmatcuk/doublestar/v4).
+- For private repositories, create a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token) with read-only permissions and provide it as the `password`.
+- SSH authentication is not supported intentionally due to the difficulty of implementing fine-grained access control with SSH keys. If you believe SSH support should be added, please [reach out](https://github.com/appgardenstudios/slash-prompt/discussions/categories/feedback).
 
 ### Environment Variable Substitution
 
@@ -217,7 +217,7 @@ In Claude Code:
 Build the Docker image:
 
 ```bash
-make build-docker
+$ make build-docker
 ```
 
 ### Testing
@@ -227,7 +227,7 @@ make build-docker
 Run unit tests:
 
 ```bash
-make test
+$ make test
 ```
 
 #### E2E Tests
@@ -235,29 +235,32 @@ make test
 Run end-to-end tests:
 
 ```bash
-make e2e
+$ make e2e
 ```
 
 Update E2E golden files:
 
 ```bash
-make e2e-update
+$ make e2e-update
 ```
 
-#### Manual Testing
+#### Manual Testing with Claude Code
 
 For local development and testing:
 
 1. Build a local Docker image:
    ```bash
-   make build-docker
+   $ make build-docker
    ```
 2. Set the `SLASH_PROMPT_IMAGE` environment variable to use your local image:
    ```bash
-   export SLASH_PROMPT_IMAGE=slash-prompt:development
+   $ export SLASH_PROMPT_IMAGE=slash-prompt:development
    ```
 3. The `.mcp.json` file is configured to use this environment variable, allowing you to test with your local build using Claude Code.
-    - Note: Due to a current bug with Claude Code, you must inline the environment variable: `SLASH_PROMPT_IMAGE=slash-prompt:development claude`
+    - Note: Due to a current [bug](https://github.com/anthropics/claude-code/issues/5202) with Claude Code, you must inline the environment variable:
+      ```bash
+      $ SLASH_PROMPT_IMAGE=slash-prompt:development claude
+      ```
 
 ### Documentation
 

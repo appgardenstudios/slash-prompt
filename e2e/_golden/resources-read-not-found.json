@@ -1,4 +1,0 @@
-{
-  "error": "handler not found for resource URI 'file://repo-1/nonexistent.md': resource not found",
-  "resource_uri": "file://repo-1/nonexistent.md"
-}

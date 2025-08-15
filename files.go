@@ -14,7 +14,7 @@ import (
 
 // File represents a file with lazy content loading
 type File struct {
-	Name    string
+	Path    string
 	Size    int64
 	gitFile *object.File // Reference to the git file for lazy loading
 	content []byte       // Cached content

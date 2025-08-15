@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log/slog"
 	"strings"
 
@@ -14,7 +13,6 @@ func registerPrompts(mcpServer *server.MCPServer, data *ServerData) {
 	slog.Info("Registering prompts", "prompts", len(data.Prompts))
 
 	for name, prompt := range data.Prompts {
-		// Create MCP prompt with the actual name being used
 		mcpPrompt := mcp.NewPrompt(name, createPromptOptions(prompt)...)
 
 		// Register prompt handler
@@ -70,17 +68,16 @@ func handlePromptRequest(_ context.Context, request mcp.GetPromptRequest, prompt
 	// Add embedded resources
 	for _, resource := range prompt.Resources {
 		var resourceContent mcp.ResourceContents
-		uri := BuildResourceURI(resource.Repo, resource.Path)
 
 		if resource.IsBlob {
 			resourceContent = mcp.BlobResourceContents{
-				URI:      uri,
+				URI:      resource.URI,
 				MIMEType: resource.MimeType,
 				Blob:     resource.Content,
 			}
 		} else {
 			resourceContent = mcp.TextResourceContents{
-				URI:      uri,
+				URI:      resource.URI,
 				MIMEType: resource.MimeType,
 				Text:     resource.Content,
 			}
@@ -92,10 +89,5 @@ func handlePromptRequest(_ context.Context, request mcp.GetPromptRequest, prompt
 		))
 	}
 
-	description := prompt.Description
-	if description == "" {
-		description = fmt.Sprintf("Prompt from %s repository", prompt.Repo)
-	}
-
-	return mcp.NewGetPromptResult(description, messages), nil
+	return mcp.NewGetPromptResult(prompt.Description, messages), nil
 }

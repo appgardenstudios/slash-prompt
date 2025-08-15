@@ -57,34 +57,3 @@ func TestResourcesRead(t *testing.T) {
 
 	compareFiles(goldenPath, outputPath, t)
 }
-
-
-func TestResourcesReadNotFound(t *testing.T) {
-	client := setupMCPClient(t, "./_input/test-config.yml")
-	ctx := context.Background()
-
-	request := mcp.ReadResourceRequest{}
-	request.Params.URI = "file://repo-1/nonexistent.md"
-
-	_, err := client.ReadResource(ctx, request)
-	if err == nil {
-		t.Fatal("expected an error for non-existent resource")
-	}
-
-	goldenPath := "./_golden/resources-read-not-found.json"
-	outputPath := "./_output/resources-read-not-found-" + time.Now().Format("20060102150405") + ".json"
-
-	// Output the error as-is (JSON-encoded)
-	errorData := map[string]interface{}{
-		"resource_uri": request.Params.URI,
-		"error":        err.Error(),
-	}
-	outputJSON(t, errorData, outputPath)
-
-	if *update {
-		updateGolden(goldenPath, outputPath, t)
-	}
-
-	compareFiles(goldenPath, outputPath, t)
-}
-

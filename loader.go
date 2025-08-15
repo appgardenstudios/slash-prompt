@@ -89,15 +89,14 @@ func loadPrompts(repoConfig RepoConfig, repoID string, allFiles map[string]*File
 
 	promptCount := 0
 	for _, file := range filteredFiles {
-		filePath := file.Name
-		prompt, err := parsePrompt(filePath, file, repoID, allFiles, data)
+		prompt, err := parsePrompt(file.Path, file, repoID, allFiles, data)
 		if err != nil {
-			slog.Error("Failed to parse prompt", "file", filePath, "repo", repoID, "error", err)
+			slog.Error("Failed to parse prompt", "file", file.Path, "repo", repoID, "error", err)
 			data.LoadingErrors = append(data.LoadingErrors, LoadingError{
 				Type:   "prompt",
 				Repo:   repoConfig.Repo,
 				RepoID: repoID,
-				Path:   filePath,
+				Path:   file.Path,
 				Error:  fmt.Sprintf("Failed to parse prompt: %v", err),
 			})
 			continue
@@ -109,9 +108,8 @@ func loadPrompts(repoConfig RepoConfig, repoID string, allFiles map[string]*File
 
 		// Add prompt resources to global resources map
 		for _, resource := range prompt.Resources {
-			resourceKey := BuildResourceURI(resource.Repo, resource.Path)
-			if _, exists := data.Resources[resourceKey]; !exists {
-				data.Resources[resourceKey] = resource
+			if _, exists := data.Resources[resource.URI]; !exists {
+				data.Resources[resource.URI] = resource
 			}
 		}
 
@@ -135,9 +133,9 @@ func loadResources(repoConfig RepoConfig, repoID string, allFiles map[string]*Fi
 
 	// Add to global resources map
 	// Check if resource already exists to avoid re-reading
-	for key, resource := range resources {
-		if _, exists := data.Resources[key]; !exists {
-			data.Resources[key] = resource
+	for uri, resource := range resources {
+		if _, exists := data.Resources[uri]; !exists {
+			data.Resources[uri] = resource
 		}
 	}
 

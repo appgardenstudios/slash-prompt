@@ -43,6 +43,7 @@ type Resource struct {
 	Path     string
 	Name     string
 	Repo     string
+	URI      string
 	Content  string
 	IsBlob   bool
 	MimeType string
@@ -144,8 +145,8 @@ func getPromptResource(spec PromptResource, promptPath, repoID string, allFiles 
 	}
 
 	// Check if resource already exists in data.Resources
-	resourceKey := filepath.Join(repoID, resourcePath)
-	if existingResource, exists := data.Resources[resourceKey]; exists {
+	uri := filepath.Join(repoID, resourcePath)
+	if existingResource, exists := data.Resources[uri]; exists {
 		return &existingResource, nil
 	}
 
@@ -168,21 +169,13 @@ func parseResources(files []*File, repoID string, data *ServerData) map[string]R
 	resources := make(map[string]Resource)
 
 	for _, file := range files {
-		filePath := file.Name
-		resourceKey := BuildResourceURI(repoID, filePath)
-
-		// Check if resource already exists
-		if _, exists := data.Resources[resourceKey]; exists {
-			continue
-		}
-
-		resource, err := getResource(file, filePath, filepath.Base(filePath), repoID, "")
+		resource, err := getResource(file, file.Path, filepath.Base(file.Path), repoID, "")
 		if err != nil {
-			slog.Warn("Failed to read resource file", "path", filePath, "error", err)
+			slog.Warn("Failed to read resource file", "path", file.Path, "error", err)
 			continue
 		}
 
-		resources[resourceKey] = *resource
+		resources[resource.URI] = *resource
 	}
 
 	slog.Debug("Parsed resources", "repo", repoID, "count", len(resources))
@@ -212,6 +205,7 @@ func getResource(file *File, path, name, repo, mimeType string) (*Resource, erro
 		Path:     path,
 		Name:     name,
 		Repo:     repo,
+		URI:      BuildResourceURI(repo, path),
 		Content:  resourceContent,
 		IsBlob:   isBlob,
 		MimeType: mimeType,

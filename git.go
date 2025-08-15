@@ -63,7 +63,7 @@ func getRepositoryFiles(repo *git.Repository) (map[string]*File, error) {
 	files := make(map[string]*File)
 	err = tree.Files().ForEach(func(gitFile *object.File) error {
 		files[gitFile.Name] = &File{
-			Name:    gitFile.Name,
+			Path:    gitFile.Name,
 			Size:    gitFile.Size,
 			gitFile: gitFile,
 		}

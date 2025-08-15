@@ -87,7 +87,6 @@ func validateConfig(config *Config) error {
 			return fmt.Errorf("repo %d: repo field is required", i)
 		}
 
-		// Get the effective ID (using default if not specified)
 		repoID, err := getRepoID(repo)
 		if err != nil {
 			return fmt.Errorf("repo %d: %w", i, err)
@@ -159,7 +158,6 @@ func getRepoID(repo RepoConfig) (string, error) {
 	}
 	return extractRepoName(repo.Repo)
 }
-
 
 func getFileFilterInclude(filter *FileFilter) []string {
 	if filter == nil || len(filter.Include) == 0 {
