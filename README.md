@@ -257,6 +257,7 @@ For local development and testing:
    export SLASH_PROMPT_IMAGE=slash-prompt:development
    ```
 3. The `.mcp.json` file is configured to use this environment variable, allowing you to test with your local build using Claude Code.
+    - Note: Due to a current bug with Claude Code, you must inline the environment variable: `SLASH_PROMPT_IMAGE=slash-prompt:development claude`
 
 ### Releasing
 
