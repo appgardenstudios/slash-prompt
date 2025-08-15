@@ -1,0 +1,23 @@
+repos:
+  - repo: ${E2E_TEST_REPO_PATH}/repo-1.git
+    id: repo-1
+    ref: refs/heads/init
+    prompts:
+      include:
+        - "prompts/**/*.md"
+    resources:
+      include:
+        - "resources/**/*.template.md"
+        - "resources/**/*.txt"
+        
+  - repo: ${E2E_TEST_REPO_PATH}/repo-2.git
+    id: repo-2
+    ref: refs/heads/main
+    prompts:
+      include:
+        - "prompts/**/*.md"
+    resources:
+      include:
+        - "resources/**/*.txt"
+        - "resources/**/*.json"
+        - "templates/**/*.md"

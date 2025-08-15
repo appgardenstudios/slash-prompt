@@ -1,0 +1,29 @@
+{
+  "resources": [
+    {
+      "uri": "file://repo-2/resources/debugging-checklist.txt",
+      "name": "checklist",
+      "mimeType": "text/plain"
+    },
+    {
+      "uri": "file://repo-1/resources/context.template.md",
+      "name": "context-template",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "file://repo-2/templates/error-template.md",
+      "name": "error-template",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "file://repo-2/resources/performance-tips.json",
+      "name": "perf-tips",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "file://repo-1/resources/style-guide.txt",
+      "name": "style-guide.txt",
+      "mimeType": "text/plain"
+    }
+  ]
+}

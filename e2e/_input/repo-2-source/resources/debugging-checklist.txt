@@ -1,0 +1,35 @@
+Debugging Checklist
+==================
+
+1. REPRODUCE THE ISSUE
+   - Can you consistently reproduce the problem?
+   - What are the exact steps to reproduce?
+   - Does it happen in different environments?
+
+2. GATHER INFORMATION
+   - What error messages do you see?
+   - Check logs for additional context
+   - What was the expected vs actual behavior?
+
+3. ISOLATE THE PROBLEM
+   - Simplify the code to minimal reproduction
+   - Comment out sections to narrow down the issue
+   - Test with different inputs
+
+4. CHECK COMMON ISSUES
+   - Syntax errors and typos
+   - Variable scope and initialization
+   - Type mismatches
+   - Null/undefined values
+   - Array bounds and off-by-one errors
+
+5. USE DEBUGGING TOOLS
+   - Print statements / console.log
+   - Debugger breakpoints
+   - Unit tests
+   - Profiling tools
+
+6. VERIFY THE FIX
+   - Does the fix solve the original problem?
+   - Are there any side effects?
+   - Add tests to prevent regression

@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Available resources:\n\n- **context-template** (repo-1)\n  - URI: `file://repo-1/resources/context.template.md`\n  - Path: `resources/context.template.md`\n  - MIME Type: `text/markdown`\n\n- **style-guide.txt** (repo-1)\n  - URI: `file://repo-1/resources/style-guide.txt`\n  - Path: `resources/style-guide.txt`\n  - MIME Type: `text/plain`\n\n- **checklist** (repo-2)\n  - URI: `file://repo-2/resources/debugging-checklist.txt`\n  - Path: `resources/debugging-checklist.txt`\n  - MIME Type: `text/plain`\n\n- **perf-tips** (repo-2)\n  - URI: `file://repo-2/resources/performance-tips.json`\n  - Path: `resources/performance-tips.json`\n  - MIME Type: `application/json`\n\n- **error-template** (repo-2)\n  - URI: `file://repo-2/templates/error-template.md`\n  - Path: `templates/error-template.md`\n  - MIME Type: `text/markdown`\n\nTotal: 5 resources\n"
+    }
+  ]
+}

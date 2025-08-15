@@ -1,0 +1,134 @@
+{
+  "prompts": [
+    {
+      "name": "analyze",
+      "description": "Analyze code for issues and improvements",
+      "arguments": [
+        {
+          "name": "language",
+          "description": "Programming language",
+          "required": true
+        },
+        {
+          "name": "focus",
+          "description": "Areas to focus on"
+        }
+      ]
+    },
+    {
+      "name": "code-review",
+      "description": "Code review assistance",
+      "arguments": [
+        {
+          "name": "type",
+          "description": "Type of review",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "debug",
+      "description": "Debugging assistance for troubleshooting code issues",
+      "arguments": [
+        {
+          "name": "code",
+          "description": "The code that has issues",
+          "required": true
+        },
+        {
+          "name": "error",
+          "description": "Error message or description of the problem",
+          "required": true
+        },
+        {
+          "name": "language",
+          "description": "Programming language"
+        }
+      ]
+    },
+    {
+      "name": "optimize",
+      "description": "Performance optimization recommendations",
+      "arguments": [
+        {
+          "name": "target",
+          "description": "What to optimize (speed, memory, size, etc.)",
+          "required": true
+        },
+        {
+          "name": "constraints",
+          "description": "Any constraints or limitations"
+        },
+        {
+          "name": "current_metrics",
+          "description": "Current performance metrics if available"
+        }
+      ]
+    },
+    {
+      "name": "repo-1:analyze",
+      "description": "Analyze code for issues and improvements",
+      "arguments": [
+        {
+          "name": "language",
+          "description": "Programming language",
+          "required": true
+        },
+        {
+          "name": "focus",
+          "description": "Areas to focus on"
+        }
+      ]
+    },
+    {
+      "name": "repo-1:code-review",
+      "description": "Code review assistance",
+      "arguments": [
+        {
+          "name": "type",
+          "description": "Type of review",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "repo-2:debug",
+      "description": "Debugging assistance for troubleshooting code issues",
+      "arguments": [
+        {
+          "name": "code",
+          "description": "The code that has issues",
+          "required": true
+        },
+        {
+          "name": "error",
+          "description": "Error message or description of the problem",
+          "required": true
+        },
+        {
+          "name": "language",
+          "description": "Programming language"
+        }
+      ]
+    },
+    {
+      "name": "repo-2:optimize",
+      "description": "Performance optimization recommendations",
+      "arguments": [
+        {
+          "name": "target",
+          "description": "What to optimize (speed, memory, size, etc.)",
+          "required": true
+        },
+        {
+          "name": "constraints",
+          "description": "Any constraints or limitations"
+        },
+        {
+          "name": "current_metrics",
+          "description": "Current performance metrics if available"
+        }
+      ]
+    }
+  ]
+}
