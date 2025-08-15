@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"context"
@@ -12,7 +12,7 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 )
 
-func registerTools(mcpServer *server.MCPServer, data *ServerData) {
+func RegisterTools(mcpServer *server.MCPServer, data *ServerData) {
 	slog.Info("Registering tools")
 
 	// Register listErrors tool

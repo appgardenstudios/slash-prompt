@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"context"
@@ -9,7 +9,7 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 )
 
-func registerPrompts(mcpServer *server.MCPServer, data *ServerData) {
+func RegisterPrompts(mcpServer *server.MCPServer, data *ServerData) {
 	slog.Info("Registering prompts", "prompts", len(data.Prompts))
 
 	for name, prompt := range data.Prompts {

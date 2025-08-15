@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"fmt"
@@ -19,7 +19,7 @@ type ServerData struct {
 	LoadingErrors []LoadingError
 }
 
-func loadAllData(config *Config) *ServerData {
+func LoadAllData(config *Config) *ServerData {
 	data := &ServerData{
 		Prompts:       make(map[string]ParsedPrompt),
 		Resources:     make(map[string]Resource),

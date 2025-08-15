@@ -4,6 +4,7 @@ import (
 	"log/slog"
 	"os"
 	"os/signal"
+	"slash-prompt/internal"
 	"syscall"
 
 	"github.com/mark3labs/mcp-go/server"
@@ -19,14 +20,14 @@ func main() {
 	slog.Info("Starting slash-prompt MCP server", "version", Version)
 
 	// Load configuration
-	config, err := loadConfig()
+	config, err := internal.LoadConfig()
 	if err != nil {
 		slog.Error("Failed to load configuration", "error", err)
 		os.Exit(1)
 	}
 
 	// Load all data
-	serverData := loadAllData(config)
+	serverData := internal.LoadAllData(config)
 
 	// Create MCP server
 	mcpServer := server.NewMCPServer(
@@ -39,9 +40,9 @@ func main() {
 	)
 
 	// Register tools and prompts
-	registerTools(mcpServer, serverData)
-	registerPrompts(mcpServer, serverData)
-	registerResources(mcpServer, serverData)
+	internal.RegisterTools(mcpServer, serverData)
+	internal.RegisterPrompts(mcpServer, serverData)
+	internal.RegisterResources(mcpServer, serverData)
 
 	// Setup graceful shutdown
 	sigChan := make(chan os.Signal, 1)
@@ -60,4 +61,3 @@ func main() {
 		os.Exit(1)
 	}
 }
-

@@ -1,4 +1,4 @@
-module github.com/appgardenstudios/slash-prompt
+module slash-prompt
 
 go 1.24.4
 

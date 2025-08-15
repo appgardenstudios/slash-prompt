@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"context"
@@ -8,7 +8,7 @@ import (
 	"github.com/mark3labs/mcp-go/server"
 )
 
-func registerResources(mcpServer *server.MCPServer, data *ServerData) {
+func RegisterResources(mcpServer *server.MCPServer, data *ServerData) {
 	slog.Info("Registering resources", "count", len(data.Resources))
 
 	// Register each resource as a static resource

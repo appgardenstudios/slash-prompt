@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"errors"
@@ -36,7 +36,7 @@ type AuthConfig struct {
 	Password string `yaml:"password"`
 }
 
-func loadConfig() (*Config, error) {
+func LoadConfig() (*Config, error) {
 	configPath := os.Getenv("SLASH_PROMPT_CONFIG_PATH")
 	if configPath == "" {
 		homeDir, err := os.UserHomeDir()

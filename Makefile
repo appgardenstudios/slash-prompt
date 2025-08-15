@@ -10,10 +10,9 @@ build-docker:
 
 .PHONY: test
 test:
-	go test .
 	rm -rf .coverdata/unit
 	mkdir -p .coverdata/unit
-	go test -cover . -args -test.gocoverdir="`pwd`/.coverdata/unit"
+	go test -cover ./internal/... -args -test.gocoverdir="`pwd`/.coverdata/unit"
 
 .PHONY: e2e
 e2e:
