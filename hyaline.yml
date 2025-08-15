@@ -1,0 +1,37 @@
+llm:
+  provider: anthropic
+  model: claude-sonnet-4-20250514
+  key: ${ANTHROPIC_KEY}
+
+github:
+  token: ${GITHUB_TOKEN}
+
+extract:
+  source:
+    id: slash-prompt
+    description: documentation for slash-prompt
+  crawler:
+    type: fs
+    options:
+      path: ./
+    include:
+      - "README.md"
+  extractors:
+    - type: md
+      include:
+        - "**/*.md"
+
+check:
+  code:
+    include:
+      - "**/*.go"
+      - "Makefile"
+    exclude:
+      - "e2e/**"
+      - "**/*_test.go"
+  documentation:
+    include:
+      - source: slash-prompt
+  options:
+    detectDocumentationUpdates:
+      source: slash-prompt
