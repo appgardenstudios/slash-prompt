@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "prompt": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i", 
+        "-v", "./prompt.yml:/home/appuser/.prompt.yml:ro",
+        "${SLASH_PROMPT_IMAGE:-ghcr.io/appgardenstudios/slash-prompt:latest}"
+      ]
+    }
+  }
+}

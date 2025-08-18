@@ -1,0 +1,15 @@
+# Build artifacts
+slash-prompt
+slash-prompt-e2e
+coverage/
+.coverdata/
+
+# Test artifacts
+e2e/
+
+# Git
+.git/
+.gitignore
+
+# Development environment
+.env

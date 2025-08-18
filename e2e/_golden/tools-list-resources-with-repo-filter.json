@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Available resources:\n\n- **context-template** (repo-1)\n  - URI: `file://repo-1/resources/context.template.md`\n  - Path: `resources/context.template.md`\n  - MIME Type: `text/markdown`\n\n- **style-guide.txt** (repo-1)\n  - URI: `file://repo-1/resources/style-guide.txt`\n  - Path: `resources/style-guide.txt`\n  - MIME Type: `text/plain`\n\nTotal: 2 resources (filtered by repo: repo-1)\n"
+    }
+  ]
+}

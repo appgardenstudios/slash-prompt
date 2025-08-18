@@ -1,0 +1,9 @@
+{
+  "contents": [
+    {
+      "uri": "file://repo-1/resources/context.template.md",
+      "mimeType": "text/markdown",
+      "text": "# Analysis Context Template\n\n## Code Overview\n- **Language**: {language}\n- **Focus Areas**: {focus}\n\n## Analysis Structure\n1. **Code Quality**: Review for clarity and maintainability\n2. **Performance**: Identify potential bottlenecks\n3. **Security**: Check for vulnerabilities\n4. **Best Practices**: Ensure adherence to standards\n\n## Recommendations\n[Provide specific recommendations here]"
+    }
+  ]
+}

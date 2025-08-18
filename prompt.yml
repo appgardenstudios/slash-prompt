@@ -1,0 +1,12 @@
+repos:
+  - repo: https://github.com/appgardenstudios/hyaline.git
+    id: hyaline
+    ref: main
+    prompts:
+      include:
+        - "contributing/prompts/**/*.md"
+      exclude:
+        - "contributing/prompts/resources/**/*"
+    resources:
+      include:
+        - "contributing/prompts/resources/**/*.template.md"

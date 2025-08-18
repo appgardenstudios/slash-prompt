@@ -1,0 +1,9 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Resource not found: file://repo-1/nonexistent.md"
+    }
+  ],
+  "isError": true
+}

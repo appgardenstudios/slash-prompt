@@ -1,0 +1,38 @@
+{
+  "general": {
+    "description": "General performance optimization techniques",
+    "tips": [
+      "Profile before optimizing to identify bottlenecks",
+      "Optimize the most impactful areas first (80/20 rule)",
+      "Measure performance before and after changes",
+      "Consider algorithmic improvements over micro-optimizations"
+    ]
+  },
+  "memory": {
+    "description": "Memory optimization strategies",
+    "tips": [
+      "Avoid memory leaks by properly disposing resources",
+      "Use object pooling for frequently created/destroyed objects",
+      "Prefer stack allocation over heap when possible",
+      "Implement lazy loading for large data structures"
+    ]
+  },
+  "speed": {
+    "description": "Speed optimization techniques",
+    "tips": [
+      "Use appropriate data structures (hash tables vs arrays)",
+      "Minimize I/O operations and batch when possible",
+      "Implement caching for expensive computations",
+      "Consider parallel processing for independent tasks"
+    ]
+  },
+  "size": {
+    "description": "Code/bundle size optimization",
+    "tips": [
+      "Remove unused code and dependencies",
+      "Use compression and minification",
+      "Implement code splitting and lazy loading",
+      "Optimize assets (images, fonts, etc.)"
+    ]
+  }
+}

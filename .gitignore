@@ -1,0 +1,20 @@
+# The binary
+slash-prompt
+!slash-prompt/
+
+# Testing artifacts
+slash-prompt-e2e
+.coverdata/
+coverage/
+
+# Development environment variables
+.env
+
+# Other files used for testing
+e2e/_output/*
+e2e/_input/test-repos
+
+# Release artifacts
+dist/
+
+.claude/
