@@ -28,17 +28,17 @@ func TestExtractRepoName(t *testing.T) {
 		{
 			name:     "Local path",
 			repoURL:  "./test-repo",
-			expected: "test_repo",
+			expected: "test-repo",
 		},
 		{
 			name:     "Local absolute path",
 			repoURL:  "/path/to/my-repo",
-			expected: "my_repo",
+			expected: "my-repo",
 		},
 		{
 			name:     "Complex repo name with hyphens",
 			repoURL:  "git@github.com:owner/my-awesome-repo.git",
-			expected: "my_awesome_repo",
+			expected: "my-awesome-repo",
 		},
 	}
 
@@ -133,6 +133,21 @@ func TestValidateConfig(t *testing.T) {
 					{
 						Repo: "git@github.com:owner/repo2.git",
 						ID:   "same-id",
+						Prompts: &FileFilter{
+							Include: []string{"**/*.md"},
+						},
+					},
+				},
+			},
+			expectErr: true,
+		},
+		{
+			name: "Invalid config - invalid repo ID format",
+			config: Config{
+				Repos: []RepoConfig{
+					{
+						Repo: "git@github.com:owner/repo.git",
+						ID:   "invalid@id",
 						Prompts: &FileFilter{
 							Include: []string{"**/*.md"},
 						},

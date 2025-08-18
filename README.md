@@ -79,7 +79,7 @@ repos:
 
 - `repos` (array, required): List of one or more repositories to load prompts and resources from.
   - `repo` (string, required): Git repository URL (HTTPS only).
-  - `id` (string, optional): Unique identifier for the repository. Defaults to repository name.
+  - `id` (string, optional): Unique identifier for the repository. Must match the regex `^[A-Za-z0-9_-]+$`. Defaults to repository name.
   - `ref` (string, optional): Git branch, tag, or commit to use. Using a commit hash is strongly recommended to mitigate supply chain attacks. Defaults to the repository's default branch.
   - `auth` (object, optional): Authentication configuration for private repositories.
     - `username` (string, required if auth specified): Username for authentication.

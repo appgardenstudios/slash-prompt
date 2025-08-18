@@ -6,11 +6,17 @@ import (
 	"log/slog"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/bmatcuk/doublestar/v4"
 	giturls "github.com/whilp/git-urls"
 	"gopkg.in/yaml.v3"
+)
+
+var (
+	repoIDCharactersRegex = regexp.MustCompile(`[A-Za-z0-9_-]`)
+	repoIDRegex           = regexp.MustCompile(`^[A-Za-z0-9_-]+$`)
 )
 
 type Config struct {
@@ -90,6 +96,10 @@ func validateConfig(config *Config) error {
 		repoID, err := getRepoID(repo)
 		if err != nil {
 			return fmt.Errorf("repo %d: %w", i, err)
+		}
+
+		if !repoIDRegex.MatchString(repoID) {
+			return fmt.Errorf("repo %d: invalid repo name format %q, must match %s", i, repoID, repoIDRegex.String())
 		}
 
 		// Check for duplicate IDs
@@ -188,8 +198,14 @@ func extractRepoName(repoURL string) (string, error) {
 	}
 
 	// Replace invalid characters with underscores
-	repoName = strings.ReplaceAll(repoName, "-", "_")
-	repoName = strings.ReplaceAll(repoName, ".", "_")
+	var result []rune
+	for _, char := range repoName {
+		if repoIDCharactersRegex.MatchString(string(char)) {
+			result = append(result, char)
+		} else {
+			result = append(result, '_')
+		}
+	}
 
-	return repoName, nil
+	return string(result), nil
 }
