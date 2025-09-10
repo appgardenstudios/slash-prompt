@@ -1,7 +1,7 @@
 llm:
-  provider: anthropic
-  model: claude-sonnet-4-20250514
-  key: ${ANTHROPIC_KEY}
+  provider: github-models
+  model: openai/gpt-5
+  key: ${GITHUB_TOKEN}
 
 github:
   token: ${GITHUB_TOKEN}
