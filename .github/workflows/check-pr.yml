@@ -9,6 +9,7 @@ jobs:
     if: ${{ github.event.pull_request.draft == false }}
     permissions:
       pull-requests: write
+      models: read
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -25,4 +26,3 @@ jobs:
         env:
           # Set env vars needed by the hyaline CLI when interpolating the hyaline config
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ANTHROPIC_KEY: ${{ secrets.HYALINE_LLM_TOKEN }}
